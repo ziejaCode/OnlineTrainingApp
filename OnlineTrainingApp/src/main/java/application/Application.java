@@ -12,5 +12,7 @@ public class Application {
         SpringApplication.run(Application.class, args);
         
         System.out.println("\nThis is test\n");
+        
+        System.out.println("\nThis is test no 2 \n");
     }
 }
