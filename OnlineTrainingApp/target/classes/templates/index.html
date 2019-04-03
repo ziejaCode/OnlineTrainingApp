@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Title</title>
+    
+    <link href="../static/css/bootstrap-3.3.4-dist/css/bootstrap.min.css" rel="stylesheet" media="screen"
+            th:href="@{/css/bootstrap-3.3.4-dist/css/bootstrap.min.css}"/>
+
+    <script src="../static/js/jquery-2.1.4.min.js"
+          th:src="@{/js/jquery-2.1.4.min.js}"></script>
+    
+    <link th:href="@{/css/style.css}" rel="stylesheet" media="screen"/>
+    
+    
+</head>
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <h1>Name of user</h1>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <h2>List of users Trainings</h2>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+            <p style="color: red">Training title</p>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12" style="background: gray">
+            <div class="row">
+                <div class="col-md-3" style="background: Id">
+                    <p>Id</p>
+                </div>
+                <div class="col-md-3" style="background: No">
+                    <p>No</p>
+                </div>
+                <div class="col-md-3" style="background: reps">
+                    <p>Reps</p>
+                </div>
+                <div class="col-md-3" style="background: weight">
+                    <p>Weight</p>
+                </div>
+                
+            </div>
+        </div>
+        
+    </div>
+
+</div>
+
+</html>

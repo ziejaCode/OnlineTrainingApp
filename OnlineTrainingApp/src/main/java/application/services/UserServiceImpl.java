@@ -2,8 +2,10 @@ package application.services;
 
 import java.util.HashSet;
 import java.util.Optional;
+import java.util.Optional;
 import java.util.Set;
 
+import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Service;
 
 import application.model.User;
@@ -23,6 +25,12 @@ public class UserServiceImpl implements UserService{
 		Optional<User> user = userRepository.findById(i);
 		return user;
 	}
+	
+//	@Override
+//	public User getUserById(int i) {
+//		User user = userRepository.findById(i);
+//		return user;
+//	}
 	
 	@Override
 	public Set<User> getAllUsers() {

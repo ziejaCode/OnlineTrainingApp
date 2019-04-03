@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
 //import model.User;
 
 @Controller
-@RequestMapping(path="")
+//@RequestMapping(path="")
 public class HomeController {
 	
 //	@Autowired
@@ -26,13 +26,13 @@ public class HomeController {
 	
 //	private static Logger logger = Logger.getLogger(HomeController.class);
 	
-	@RequestMapping("/")
-	public @ResponseBody String showWelcomePage(){		
+	@RequestMapping({"/","/index" })
+	public  String showWelcomePage(){		
 //		logger.info("Showing welcome page");
 		System.out.println("...");
 		System.out.println("Connecting...welcome");
 		System.out.println("...");
-		return "welcomePage";		
+		return "index";		
 	}
 	
 	@RequestMapping("/guestPage")
@@ -57,14 +57,14 @@ public class HomeController {
 //	}
 	
 	@RequestMapping("/about")
-	public @ResponseBody String showAboutPage(Model model){				
+	public String showAboutPage(Model model){				
 		return "about";
 	}
 	
 	
-//	@RequestMapping("/contact")
-//	public String showContactPage(Model model){				
-//		return "contact";
-//	}
+	@RequestMapping("/contact")
+	public String showContactPage(Model model){				
+		return "contact";
+	}
 	
 }
