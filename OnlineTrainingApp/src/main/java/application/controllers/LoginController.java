@@ -1,7 +1,9 @@
 package application.controllers;
 import java.util.Optional;
+import java.util.Set;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -19,12 +21,22 @@ public class LoginController {
 		this.userService = userService;
 	}
     
-    @RequestMapping("/all")
-	public @ResponseBody Iterable<User> getAllUsers() {	    	
-		return userService.getAllUsers();
+    @RequestMapping("/user/showUser")
+	//public @ResponseBody Iterable<User> getAllUsers() {	
+    public String getAllUsers(Model model) {
+    	
+    	
+    	Set<User>users = userService.getAllUsers(); 
+    	model.addAttribute("users", users);
+    	
+    	for(User u: users) {
+    		System.out.println("Users name is " + u.getUser_name());
+    	}
+    	
+		return "user/showUser";
 	}    
     
-    @RequestMapping("/oneU")
+    @RequestMapping("/user/showUser/id")
 	public @ResponseBody Optional<User> getUser() {
     	
 		Optional<User> user = userService.getUserById(6);
