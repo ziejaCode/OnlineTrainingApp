@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Users</title>
+    
+    <link href="../static/css/bootstrap-3.3.4-dist/css/bootstrap.min.css" rel="stylesheet" media="screen"
+            th:href="@{/css/bootstrap-3.3.4-dist/css/bootstrap.min.css}"/>
+
+    <script src="../static/js/jquery-2.1.4.min.js"
+          th:src="@{/js/jquery-2.1.4.min.js}"></script>
+    
+    <link th:href="@{/css/style.css}" rel="stylesheet" media="screen"/>
+    
+    
+</head>
+
+
+<div class="showUsersTrainings container">
+	<div class="row">
+		<div id="trainingListTable"
+			class="col-xs-offset-0 col-xs-12 col-sm-offset-1 col-sm-10">			
+			<h2>This are all current users</h2>
+			
+			<div class="table-responsive" th:if="${not#lists.isEmpty(users)}">
+				<table class="table">
+					<thead>
+						<tr>
+							<th>Username</th><th>Email</th><th>Role</th><th></th>
+						</tr>
+					</thead>
+
+					<tbody>
+						
+							<tr th:each="users:${users}">
+								<td th:text="${user.user_name}">Marian</td>
+								<td >mara@jf.com</td>
+								<td >USER</td>
+								<td class="tdDel">
+								<a  >Delete</a>
+								</td>
+							</tr>
+						
+					</tbody>
+				</table>
+			</div>
+			<br>
+			<div id="goBackLinks">	
+				<sec:authorize access="isAuthenticated()">
+					<a href="<c:url value='/adminPage'/>">Go back</a>
+				</sec:authorize>
+			</div>
+
+		</div>
+	</div>
+</div>
+
+
+</html>
