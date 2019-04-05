@@ -12,8 +12,15 @@
     
     <link th:href="@{/css/style.css}" rel="stylesheet" media="screen"/>
     
-    
 </head>
+
+<body>
+
+ 
+<div class="container" th:replace="fragments/header :: header">
+	<p>header</p>
+</div>
+ 
 
 
 <div class="showUsersTrainings container">
@@ -33,7 +40,7 @@
 					<tbody>
 						
 							<tr th:each="users:${users}">
-								<td th:text="${user.user_name}">Marian</td>
+								<td >Marian</td>
 								<td >mara@jf.com</td>
 								<td >USER</td>
 								<td class="tdDel">
@@ -46,14 +53,19 @@
 			</div>
 			<br>
 			<div id="goBackLinks">	
-				<sec:authorize access="isAuthenticated()">
+				
 					<a href="<c:url value='/adminPage'/>">Go back</a>
-				</sec:authorize>
+				
 			</div>
 
 		</div>
 	</div>
 </div>
 
+<div class="container" th:replace="fragments/footer :: footer">
+<p>footer</p>
+</div>
+
+</body>
 
 </html>
