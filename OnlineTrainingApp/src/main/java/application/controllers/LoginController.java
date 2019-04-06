@@ -49,7 +49,10 @@ public class LoginController {
 	}
 
 	//	save user
-	    
+//    @RequestMapping("/product")
+//    public String getProduct(){
+//        return "redirect:/index";
+//    }    
 	//  delete user
 	    
 	//  update user

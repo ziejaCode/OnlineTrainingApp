@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Title</title>
+    
+    <link href="../static/css/bootstrap-3.3.4-dist/css/bootstrap.min.css" rel="stylesheet" media="screen"
+            th:href="@{/css/bootstrap-3.3.4-dist/css/bootstrap.min.css}"/>
+
+    <script src="../static/js/jquery-2.1.4.min.js"
+          th:src="@{/js/jquery-2.1.4.min.js}"></script>
+    
+    <link th:href="@{/css/style.css}" rel="stylesheet" media="screen"/>
+    
+    
+</head>
+
+	<div class="container" th:replace="fragments/header :: header">
+		<p>header</p>
+	</div>
+
+	<div class="welcomePage">		
+		<div class="top">
+			<h1>Welcome in Online Training Organiser</h1>
+			<br>		
+			<h1>First time in?</h1>	 		 			
+		</div>		
+		<div class="bottom">
+			<a class="welcomePageLink" href="<c:url value='/guestPage'/>">Take free tour</a>
+			<br>
+			<br>
+			<!--  <sec:authorize access="!isAuthenticated()">	-->	
+			<a class="welcomePageLink" href="<c:url value='/createNewAccount'/>">Register now and create your own training</a><br><br>		
+			<!-- </sec:authorize> -->			
+			<!--  <sec:authorize access="hasRole('ROLE_ADMIN')"> -->
+			<a class="welcomePageLink" href="<c:url value='/adminPage'/>">Administrators section</a>	
+			<!-- </sec:authorize> -->
+		</div>
+	</div>
+
+	<div class="container" th:replace="fragments/footer :: footer">
+		<p>footer</p>
+	</div>
+
+
+</html>

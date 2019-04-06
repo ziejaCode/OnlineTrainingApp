@@ -26,13 +26,13 @@ public class HomeController {
 	
 //	private static Logger logger = Logger.getLogger(HomeController.class);
 	
-	@RequestMapping({"/","/index" })
+	@RequestMapping({"/","" })
 	public  String showWelcomePage(){		
 //		logger.info("Showing welcome page");
 		System.out.println("...");
 		System.out.println("Connecting...welcome");
 		System.out.println("...");
-		return "index";		
+		return "welcomePage";		
 	}
 	
 	@RequestMapping("/guestPage")
