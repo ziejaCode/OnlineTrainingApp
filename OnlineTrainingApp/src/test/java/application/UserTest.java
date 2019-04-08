@@ -30,7 +30,7 @@ public class UserTest {
 	@Before
 	public void createUserService() throws Exception {
 		
-		MockitoAnnotations.initMocks(this);		
+		//MockitoAnnotations.initMocks(this);		
 		userService = new UserServiceImpl(userRepository);		
 	}
 	
@@ -39,7 +39,7 @@ public class UserTest {
 	public void getUser() throws Exception {
 		
 		
-		Optional<User> user =  userService.getUserById(6);	
+		//Optional<User> user =  userService.getUserById(6);	
 		
 		Set<User>users = userService.getAllUsers();
 		assertEquals(users.size(), 0);

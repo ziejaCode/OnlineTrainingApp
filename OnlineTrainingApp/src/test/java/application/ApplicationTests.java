@@ -12,7 +12,7 @@ public class ApplicationTests {
 	
 	@Test
 	public void contextLoads() {
-		
+		System.out.println("This is an application Test ---- ");
 	}
 
 }
