@@ -23,20 +23,36 @@ public class LoginController {
     
     @RequestMapping("/user/showUser")
 	//public @ResponseBody Iterable<User> getAllUsers() {	
-    public String getAllUsers(Model model) {
-    	
+    public String getAllUsers(Model model) {    	
     	
     	Set<User>users = userService.getAllUsers(); 
-    	model.addAttribute("users", users);
+    	model.addAttribute("users", userService.getAllUsers());
     	
-    	for(User u: users) {
-    		System.out.println("Users name is " + u.getUser_name());
-    	}
+//    	for(User u: users) {
+//    		System.out.println("Users name is " + u.getUser_name());
+//    	}
     	
 		return "user/showUser";
 	}    
     
-    @RequestMapping("/user/showUser/id")
+    
+    //pure testing purpose - to delete
+    @RequestMapping("/testGetUsers")
+	public @ResponseBody Iterable<User> getAllUsersData() {
+    	
+    	Set<User>users = userService.getAllUsers(); 
+    	//model.addAttribute("users", users);
+    	
+    	for(User u: users) {
+    		System.out.println("Users name is " + u.getUserName());
+    	}
+    	return users;
+    	
+		
+	}    
+    
+    
+    @RequestMapping("/user/showUser/{id}")
 	public @ResponseBody Optional<User> getUser() {
     	
 		Optional<User> user = userService.getUserById(6);

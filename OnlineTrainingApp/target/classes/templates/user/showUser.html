@@ -29,7 +29,12 @@
 			class="col-xs-offset-0 col-xs-12 col-sm-offset-1 col-sm-10">			
 			<h2>This are all current users</h2>
 			
-			<div class="table-responsive" th:if="${not#lists.isEmpty(users)}">
+			
+			
+			<div class="table-responsive" >
+			
+			<!-- th:if="${not#lists.isEmpty(users)}" -->
+			
 				<table class="table">
 					<thead>
 						<tr>
@@ -37,10 +42,9 @@
 						</tr>
 					</thead>
 
-					<tbody>
-						
+					<tbody>						
 							<tr th:each="users:${users}">
-								<td th:text="${user.user_name}">Marian</td>
+								<td >Marian</td>
 								<td >mara@jf.com</td>
 								<td >USER</td>
 								<td class="tdDel">

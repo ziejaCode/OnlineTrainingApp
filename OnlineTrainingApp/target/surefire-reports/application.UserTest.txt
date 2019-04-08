@@ -1,0 +1,8 @@
+-------------------------------------------------------------------------------
+Test set: application.UserTest
+-------------------------------------------------------------------------------
+Tests run: 1, Failures: 0, Errors: 1, Skipped: 0, Time elapsed: 0 s <<< FAILURE! - in application.UserTest
+getUser(application.UserTest)  Time elapsed: 0 s  <<< ERROR!
+java.lang.NullPointerException
+	at application.UserTest.getUser(UserTest.java:44)
+

@@ -28,8 +28,9 @@ public class User {
     private Integer user_id;
 
     @Column(name="user_name")
-    private String user_name;
-
+    //private String user_name;
+    private String userName;
+    
     @Column(name="user_email")
     private String user_email;
 
@@ -65,17 +66,29 @@ public class User {
 		this.user_id = user_id;
 	}
 
-	public String getUser_name() {
-		return user_name;
+//	public String getUser_name() {
+//		return user_name;
+//	}
+//
+//	public void setUser_name(String user_name) {
+//		this.user_name = user_name;
+//	}
+
+	public String getUserName() {
+		return userName;
 	}
 
-	public void setUser_name(String user_name) {
-		this.user_name = user_name;
+	public void setUserName(String userName) {
+		this.userName = userName;
 	}
-
+	
+	//////////////////////////////////////////////////
+	
 	public String getUser_email() {
 		return user_email;
 	}
+
+	
 
 	public void setUser_email(String user_email) {
 		this.user_email = user_email;
@@ -126,7 +139,7 @@ public class User {
 
 	@Override
 	public String toString() {
-		return "User [user_id=" + user_id + ", user_name=" + user_name + ", user_email=" + user_email + ", password="
+		return "User [user_id=" + user_id + ", user_name=" + userName + ", user_email=" + user_email + ", password="
 				+ password + ", authority=" + authority + ", created=" + created + "\n         exercises : " + exercises + "\n         trainings : " + trainings + "\n      ]";
 	}
 

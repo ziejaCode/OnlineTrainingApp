@@ -1,0 +1,9 @@
+-------------------------------------------------------------------------------
+Test set: application.repositories.UserIntegrationTest
+-------------------------------------------------------------------------------
+Tests run: 1, Failures: 0, Errors: 1, Skipped: 0, Time elapsed: 5.111 s <<< FAILURE! - in application.repositories.UserIntegrationTest
+test(application.repositories.UserIntegrationTest)  Time elapsed: 1.428 s  <<< ERROR!
+org.springframework.transaction.CannotCreateTransactionException: Could not open JPA EntityManager for transaction; nested exception is org.hibernate.exception.SQLGrammarException: Unable to acquire JDBC Connection
+Caused by: org.hibernate.exception.SQLGrammarException: Unable to acquire JDBC Connection
+Caused by: com.mysql.jdbc.exceptions.jdbc4.MySQLSyntaxErrorException: User marcin_admin already has more than 'max_user_connections' active connections
+

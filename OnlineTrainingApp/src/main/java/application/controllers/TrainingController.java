@@ -75,7 +75,7 @@ public class TrainingController {
 	@RequestMapping("/oneT")
 	public @ResponseBody Optional<Training> getTraining() {
 		// This returns a JSON or XML with the users
-		Optional<Training> training = trainingService.getTrainingById(26);
+		Optional<Training> training = trainingService.getTrainingById(5);
 		
 		System.out.println("...");
 //		System.out.println("Connecting...all " + trainings.get(0).getTrainingName());

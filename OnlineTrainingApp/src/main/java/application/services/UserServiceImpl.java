@@ -35,7 +35,8 @@ public class UserServiceImpl implements UserService{
 	@Override
 	public Set<User> getAllUsers() {
 		Set<User> userSet = new HashSet<>();
-		userRepository.findAll().iterator().forEachRemaining(userSet::add);
+		userRepository.findAll()
+		.iterator().forEachRemaining(userSet::add);
 	    return userSet;
 	}
 	@Override
