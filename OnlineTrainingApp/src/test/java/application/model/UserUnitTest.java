@@ -4,13 +4,14 @@ import static org.junit.Assert.assertEquals;
 
 import java.util.Date;
 
+import org.junit.AfterClass;
 import org.junit.Before;
 import org.junit.Test;
 
 public class UserUnitTest {
 
 	User user;
-	Date date;
+	Date date; 
 	
 	@Before
 	public void setUp() {
@@ -32,6 +33,13 @@ public class UserUnitTest {
 	@Test
 	public void getCreatedTest() {		
 		assertEquals(date, user.getCreated());
+	}
+	
+	
+	@AfterClass
+	public void tearDownAfterClass() throws Exception { 		
+		user = null;
+		date = null;
 	}
 
 }
