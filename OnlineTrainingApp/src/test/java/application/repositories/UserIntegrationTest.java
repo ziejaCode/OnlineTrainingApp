@@ -20,19 +20,19 @@ import application.repositories.UserRepository;
 import org.springframework.boot.test.context.*;
 
 
-@RunWith(SpringRunner.class)
-@DataJpaTest
-@AutoConfigureTestDatabase(replace=Replace.NONE)
+//@RunWith(SpringRunner.class)
+//@DataJpaTest
+//@AutoConfigureTestDatabase(replace=Replace.NONE)
 public class UserIntegrationTest {
 
-	@Autowired
+//	@Autowired
 	UserRepository userRepository;
 	
-	@Before
+//	@Before
 	public void setUpBeforeClass() throws Exception {
 	}
 
-	@Test
+	//@Test
 	public void test() {
 		
 			Optional<User> user = userRepository.findByUserName("borek");
