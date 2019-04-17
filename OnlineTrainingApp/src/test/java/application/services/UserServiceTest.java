@@ -31,7 +31,6 @@ public class UserServiceTest {
 	//@Autowired
 	UserService userService;
 	
-	
 	@Mock
 	UserRepository userRepository;
 	
