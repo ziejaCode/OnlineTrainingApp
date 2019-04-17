@@ -8,13 +8,20 @@ import org.springframework.stereotype.Service;
 import application.model.User;
 
 @Service
-public interface UserService {
+public interface UserService {	
 	
-	public Set<User> getAllUsers();
 
 	public String saveUser(User user);
 
 	public Optional<User> getUserById(int i);
 
+	public String updateUser(User user);
+	
+	public String deleteUser(String userName);
+	
+	
+	public Set<User> getAllUsers();
+	
+	public String deleteAllUsers();
 	
 }

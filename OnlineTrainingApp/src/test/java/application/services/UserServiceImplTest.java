@@ -5,28 +5,19 @@ import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
-import java.util.Date;
 import java.util.HashSet;
-import java.util.Optional;
 import java.util.Set;
 
+import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
-import org.junit.runner.RunWith;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.boot.test.context.SpringBootTest.WebEnvironment;
-import org.springframework.data.repository.CrudRepository;
-import org.springframework.test.context.junit4.SpringRunner;
 
 import application.model.User;
 import application.repositories.UserRepository;
 
-@RunWith(SpringRunner.class)
-//@SpringBootTest(webEnvironment=WebEnvironment.NONE)
-public class UserServiceTest {
+public class UserServiceImplTest {
 
 	//@Autowired
 	UserService userService;
@@ -42,12 +33,35 @@ public class UserServiceTest {
 	}
 	
 	
-	
-	
-	
-	
+
 	@Test
-	public void getUsers() throws Exception {
+	public void testUserServiceImpl() {
+		assertNotNull(userService);
+	}
+
+	@Test
+	public void testGetUserById() {
+		
+		
+	}
+
+//	@Test
+//	public void testSaveUser() {
+//		fail("Not yet implemented");
+//	}
+//
+//	@Test
+//	public void testUpdateUser() {
+//		fail("Not yet implemented");
+//	}
+//
+//	@Test
+//	public void testDeleteUser() {
+//		fail("Not yet implemented");
+//	}
+
+	@Test
+	public void testGetAllUsers() {
 		
 		User user = new User();
 		HashSet<User> userData = new HashSet();
@@ -60,12 +74,16 @@ public class UserServiceTest {
 		assertEquals(users.size(), 1);
 		verify(userRepository,  times(1)).findAll();
 		System.out.println("\nUsers name is " + users.toString());
-		
-		
 	}
-	
-	
-	
-	
 
+//	@Test
+//	public void testDeleteAllUsers() {
+//		fail("Not yet implemented");
+//	}
+
+	@After
+	public void tearDown() throws Exception {
+		userService = null;
+		userRepository = null;
+	}
 }

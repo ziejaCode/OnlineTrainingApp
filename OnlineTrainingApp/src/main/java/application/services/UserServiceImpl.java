@@ -25,12 +25,26 @@ public class UserServiceImpl implements UserService{
 		Optional<User> user = userRepository.findById(i);
 		return user;
 	}
+
 	
-//	@Override
-//	public User getUserById(int i) {
-//		User user = userRepository.findById(i);
-//		return user;
-//	}
+	@Override
+	public String saveUser(User user) {		
+		userRepository.save(user);		
+		return "User saved";
+	}
+
+	@Override
+	public String updateUser(User user) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public String deleteUser(String userName) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 	
 	@Override
 	public Set<User> getAllUsers() {
@@ -39,10 +53,11 @@ public class UserServiceImpl implements UserService{
 		.iterator().forEachRemaining(userSet::add);
 	    return userSet;
 	}
+	
 	@Override
-	public String saveUser(User user) {		
-		userRepository.save(user);		
-		return "User saved";
+	public String deleteAllUsers() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 	
