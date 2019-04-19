@@ -21,11 +21,14 @@ public class UserServiceImpl implements UserService{
 	}
 
 	@Override
-	public Optional<User> getUserById(int i) {
-		Optional<User> user = userRepository.findById(i);
+	public Optional<User> getUserByUserName(String name) {
+		Optional<User> user = userRepository.findByUserName(name);
 		return user;
 	}
 
+	
+	
+	
 	
 	@Override
 	public String saveUser(User user) {		
@@ -60,6 +63,10 @@ public class UserServiceImpl implements UserService{
 		return null;
 	}
 
+
+
+
+	
 	
 
 

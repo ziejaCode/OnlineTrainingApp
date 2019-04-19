@@ -21,7 +21,7 @@
 	<p>header</p>
 </div>
  
-<!-- <h2 th:text="${user.userName}"></h2> -->
+
 
 <div class="showUsersTrainings container">
 	<div class="row">
@@ -29,10 +29,38 @@
 			class="col-xs-offset-0 col-xs-12 col-sm-offset-1 col-sm-10">			
 			<h2>This are all current users</h2>
 			
-			 
-			<h2 th:text="${user.userName}"></h2>
 			
 			
+			<div class="table-responsive" >
+			
+			<!-- th:if="${not#lists.isEmpty(users)}" -->
+			
+				<table class="table">
+					<thead>
+						<tr>
+							<th>Username</th><th>Email</th><th>Role</th><th></th>
+						</tr>
+					</thead>
+
+					<tbody>						
+							<tr th:each="user:${users}">
+								<td th:text="${user.userName}">Marian</td>
+								<td th:text="${user.user_email}">mara@jf.com</td>
+								<td th:text="${user.authority}">USER</td>
+								<td class="tdDel">
+								<a  >Delete</a>
+								</td>
+							</tr>
+						
+					</tbody>
+				</table>
+			</div>
+			<br>
+			<div id="goBackLinks">	
+				
+					<a href="<c:url value='/adminPage'/>">Go back</a>
+				
+			</div>
 
 		</div>
 	</div>

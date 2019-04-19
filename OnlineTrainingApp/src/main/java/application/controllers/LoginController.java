@@ -4,7 +4,9 @@ import java.util.Set;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import application.model.Training;
@@ -21,20 +23,37 @@ public class LoginController {
 		this.userService = userService;
 	}
     
-    @RequestMapping("/user/showUser")
+    @RequestMapping("/user/showUsers")
 	//public @ResponseBody Iterable<User> getAllUsers() {	
     public String getAllUsers(Model model) {    	
     	
     	Set<User>users = userService.getAllUsers(); 
     	model.addAttribute("users", userService.getAllUsers());
     	
-//    	for(User u: users) {
-//    		System.out.println("Users name is " + u.getUser_name());
-//    	}
+    	for(User u: users) {
+    		System.out.println("Users name is " + u.getUserName());
+    	}
     	
-		return "user/showUser";
+		return "user/showUsers";
 	}    
     
+    @RequestMapping("/user/showUser/{name}")
+    public String getIndividualUser(@PathVariable String name,  Model model ) {
+    	
+    	Optional<User> user = userService.getUserByUserName(name);
+    	model.addAttribute("user", user);
+    	
+//    	System.out.println("...");
+//		System.out.println("Provided " + name);
+//		System.out.println("...");
+    	
+    	System.out.println("...");
+		System.out.println("Connecting...all " + user);
+		System.out.println("...");
+    	
+    	
+    	return "user/showUser";
+    }
     
     //pure testing purpose - to delete
     @RequestMapping("/testGetUsers")
@@ -52,17 +71,17 @@ public class LoginController {
 	}    
     
     
-    @RequestMapping("/user/showUser/{id}")
-	public @ResponseBody Optional<User> getUser() {
-    	
-		Optional<User> user = userService.getUserById(6);
-		
-		System.out.println("...");
-		System.out.println("Connecting...all " + user.get());
-		System.out.println("...");
-				
-		return user;
-	}
+//    @RequestMapping("/user/showUser/{id}")
+//	public @ResponseBody Optional<User> getUser() {
+//    	
+//		Optional<User> user = userService.getUserById(6);
+//		
+//		System.out.println("...");
+//		System.out.println("Connecting...all " + user.get());
+//		System.out.println("...");
+//				
+//		return user;
+//	}
 
 	//	save user
 //    @RequestMapping("/product")
