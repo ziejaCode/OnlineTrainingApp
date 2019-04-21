@@ -20,14 +20,18 @@ public class UserServiceImpl implements UserService{
 		this.userRepository = userRepository;
 	}
 
-	@Override
-	public Optional<User> getUserByUserName(String name) {
-		Optional<User> user = userRepository.findByUserName(name);
-		return user;
-	}
+//	@Override
+//	public Optional<User> getUserByUserName(String name) {
+//		Optional<User> user = userRepository.findByUserName(name);
+//		return user;
+//	}
 
 	
-	
+	@Override
+	public User getUserByUserName(String name) {
+		User user = userRepository.findByUserName(name);
+		return user;
+	}
 	
 	
 	@Override

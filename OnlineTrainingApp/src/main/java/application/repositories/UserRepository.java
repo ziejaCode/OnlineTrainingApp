@@ -13,7 +13,10 @@ public interface UserRepository extends CrudRepository<User, Integer> {
 		
 	//Optional<User> findByPassword(String password);
 	
-	Optional<User> findByUserName(String userName);
+	User findByUserName(String userName);
+	//Optional<User> findByUserName(String userName);
+	
+	
 	
 //	Optional<User> findByDescription(String description);
 

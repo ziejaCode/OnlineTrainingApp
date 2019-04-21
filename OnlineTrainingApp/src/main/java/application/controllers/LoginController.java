@@ -40,7 +40,8 @@ public class LoginController {
     @RequestMapping("/user/showUser/{name}")
     public String getIndividualUser(@PathVariable String name,  Model model ) {
     	
-    	Optional<User> user = userService.getUserByUserName(name);
+    	User user = userService.getUserByUserName(name);
+    	//Optional<User> user = userService.getUserByUserName(name);
     	model.addAttribute("user", user);
     	
 //    	System.out.println("...");

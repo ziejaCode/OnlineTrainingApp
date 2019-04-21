@@ -27,6 +27,10 @@ import application.repositories.UserRepository;
 import application.services.UserService;
 import application.services.UserServiceImpl;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
+import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase.Replace;
+import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.context.SpringBootTest.WebEnvironment;
 import org.springframework.test.context.junit4.SpringRunner;
@@ -37,20 +41,20 @@ import org.springframework.ui.Model;
 
 
 
-//@RunWith(SpringRunner.class)
-//@SpringBootTest(webEnvironment=WebEnvironment.NONE)
-
-public class UserControllerTest {
-
+@RunWith(SpringRunner.class)
+@DataJpaTest
+@AutoConfigureTestDatabase(replace=Replace.NONE)
+public class UserControllerIntegrationTest {
 	
-	@Mock
 	UserService userService;
 	
-	@Mock
-	Model model;
+	//@Autowired
+	Model model = null;
 	
 	LoginController loginControl;	
 	
+	@Autowired
+	UserRepository userRepository;
 	
 //	@Captor
 //	ArgumentCaptor<Set<User>> argumentCaptor;
@@ -58,26 +62,46 @@ public class UserControllerTest {
 	@Before
 	public void createUserController() throws Exception {		
 				
-		MockitoAnnotations.initMocks(this);		
-		//userService = new UserServiceImpl(userRepository);	
+//		MockitoAnnotations.initMocks(this);		
+		
+		userService = new UserServiceImpl(userRepository);	
 		
 		loginControl = new LoginController(userService);
 	}
 	
 	
+//	@Test
+//	public void testMVC() throws Exception {
+//		
+//		MockMvc mockMvc = MockMvcBuilders.standaloneSetup(loginControl).build();
+//		
+//		mockMvc.perform(get("/user/showUser"))
+//				.andExpect(status().isOk())
+//				.andExpect(view().name("user/showUser"));
+//	}
+	
+	
 	@Test
-	public void testMVC() throws Exception {
+	public void testGetUserByUserName() {
+	
 		
-		MockMvc mockMvc = MockMvcBuilders.standaloneSetup(loginControl).build();
 		
-		mockMvc.perform(get("/user/showUser"))
-				.andExpect(status().isOk())
-				.andExpect(view().name("user/showUser"));
+		String urlParh = loginControl.getIndividualUser("borek", model);
+		
+		User user = userService.getUserByUserName("borek");
+		
+		model.addAttribute("user", user);
+		
+		
+		
+		assertEquals("user/showUser", urlParh);
+		assertEquals("gienia", user.getPassword());
+		assertEquals(new Integer(7), user.getUser_id());
+		assertNotNull(user);
+		
 	}
 	
-	
-	
-	@Test
+	//@Test
 	public void test() {
 		
 		Set<User> userData = new HashSet<User>();

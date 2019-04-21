@@ -15,4 +15,5 @@ public interface TrainingService {
 	public String saveTraining(Training training);
 
 	public Optional<Training>  getTrainingById(int trainId);
+	//public Training  getTrainingById(int trainId);
 }

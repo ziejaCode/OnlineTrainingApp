@@ -20,27 +20,33 @@ import application.repositories.UserRepository;
 import org.springframework.boot.test.context.*;
 
 
-//@RunWith(SpringRunner.class)
-//@DataJpaTest
-//@AutoConfigureTestDatabase(replace=Replace.NONE)
-public class UserIntegrationTest {
+@RunWith(SpringRunner.class)
+@DataJpaTest
+@AutoConfigureTestDatabase(replace=Replace.NONE)
+public class UserRepositoryIntegrationTest {
 
-//	@Autowired
+	@Autowired
 	UserRepository userRepository;
 	
-//	@Before
+	@Before
 	public void setUpBeforeClass() throws Exception {
 	}
 
-	//@Test
-	public void test() {
+	@Test
+	public void testGetUserByUserName() {
 		
-			Optional<User> user = userRepository.findByUserName("borek");
-			assertEquals("gienia", user.get().getPassword());
+//			Optional<User> user = userRepository.findByUserName("borek");
+//			assertEquals("gienia", user.get().getPassword());
+			
+			User user = userRepository.findByUserName("borek");			
+			assertEquals("gienia", user.getPassword());
+			assertEquals(new Integer(7), user.getUser_id());
+			assertNotNull(user);
 			
 			System.out.println();
 			System.out.println();
-			System.out.println("I jest " + user.get().getUserName());
+//			System.out.println("I jest " + user.get().getUserName());
+			System.out.println("I jest " + user.getUserName());
 			System.out.println();
 			System.out.println();
 			

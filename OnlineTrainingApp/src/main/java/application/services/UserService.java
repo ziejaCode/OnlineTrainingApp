@@ -13,7 +13,8 @@ public interface UserService {
 
 	public String saveUser(User user);
 
-	public Optional<User> getUserByUserName(String name);
+	//public Optional<User> getUserByUserName(String name);
+	public User getUserByUserName(String name);
 
 	public String updateUser(User user);
 	

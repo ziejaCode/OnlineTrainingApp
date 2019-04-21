@@ -30,6 +30,9 @@ public class TrainingServiceImpl implements TrainingService{
 
 	@Override
 	public Optional<Training> getTrainingById(int trainId) {
+		
+		
+		
 		return trainingRepository.findById(trainId);
 	}
 
