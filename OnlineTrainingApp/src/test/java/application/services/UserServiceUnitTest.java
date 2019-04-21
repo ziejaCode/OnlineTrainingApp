@@ -49,7 +49,7 @@ public class UserServiceUnitTest {
 //		MockitoAnnotations.initMocks(this);	
 		
 		
-		userService = new UserServiceImpl(userRepository);	
+		//userService = new UserServiceImpl(userRepository);	
 		
 		
 	}

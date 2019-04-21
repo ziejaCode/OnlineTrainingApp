@@ -4,11 +4,14 @@ import java.util.Set;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import application.commands.UserCommand;
 import application.model.Training;
 import application.model.User;
 import application.services.UserService;
@@ -55,6 +58,26 @@ public class LoginController {
     	
     	return "user/showUser";
     }
+    
+    
+    @RequestMapping("/user/new")
+    public String newUser(Model model) {    	
+    	model.addAttribute("user", new UserCommand());
+    	return "user/newUser";
+    }
+    
+    @PostMapping
+    @RequestMapping("user")
+    //public String saveUpdateUser(@ModelAttribute User user) {    	
+    public String saveUpdateUser(@ModelAttribute UserCommand userCommand) { 	
+    	
+    	UserCommand savedUserCommand = userService.saveUserCommand(userCommand);
+    	
+    	return "redirect:/user/showUser/" + savedUserCommand.getUserName();
+    }
+    
+    
+    
     
     //pure testing purpose - to delete
     @RequestMapping("/testGetUsers")

@@ -5,24 +5,34 @@ import java.util.Set;
 
 import org.springframework.stereotype.Service;
 
+import application.commands.UserCommand;
 import application.model.User;
 
 @Service
 public interface UserService {	
 	
 
-	public String saveUser(User user);
+	
+	public void saveOrUpdateUser(User user);
 
-	//public Optional<User> getUserByUserName(String name);
+	public UserCommand saveUserCommand(UserCommand userCommand);
+	
+	
+	//public String saveUser(User user);
+	
 	public User getUserByUserName(String name);
 
-	public String updateUser(User user);
+	//public String updateUser(User user);
 	
-	public String deleteUser(String userName);
+	public String deleteUserByName(String userName);
+	
+	
 	
 	
 	public Set<User> getAllUsers();
 	
 	public String deleteAllUsers();
+
+	
 	
 }

@@ -64,7 +64,7 @@ public class UserControllerIntegrationTest {
 				
 //		MockitoAnnotations.initMocks(this);		
 		
-		userService = new UserServiceImpl(userRepository);	
+		//userService = new UserServiceImpl(userRepository);	
 		
 		loginControl = new LoginController(userService);
 	}
