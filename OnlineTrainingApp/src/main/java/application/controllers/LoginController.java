@@ -71,7 +71,7 @@ public class LoginController {
     //public String saveUpdateUser(@ModelAttribute User user) {    	
     public String saveUpdateUser(@ModelAttribute UserCommand userCommand) { 	
     	
-    	UserCommand savedUserCommand = userService.saveUserCommand(userCommand);
+    	UserCommand savedUserCommand = userService.saveOrUpdateUser(userCommand);
     	
     	return "redirect:/user/showUser/" + savedUserCommand.getUserName();
     }

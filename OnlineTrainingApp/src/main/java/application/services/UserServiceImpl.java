@@ -24,6 +24,7 @@ public class UserServiceImpl implements UserService{
 	private final UserToUserCommand userToUserCommand;
 	
 	
+
 	
 	
 	public UserServiceImpl(UserRepository userRepository, UserCommandToUser userCommandToUser, UserToUserCommand userToUserCommand) {
@@ -32,35 +33,42 @@ public class UserServiceImpl implements UserService{
 		this.userToUserCommand = userToUserCommand;
 	}
 
-//	@Override
-//	public Optional<User> getUserByUserName(String name) {
-//		Optional<User> user = userRepository.findByUserName(name);
-//		return user;
-//	}
-
-	
 	@Override
-	public User getUserByUserName(String name) {
-		User user = userRepository.findByUserName(name);
-		return user;
+	@Transactional
+	public UserCommand saveOrUpdateUser(UserCommand userCommand) {
+		
+		User detachedUser = userCommandToUser.convert(userCommand);
+		User savedUser = userRepository.save(detachedUser);
+        //log.debug("Saved UserName:" + savedUser.getUserName());
+        return userToUserCommand.convert(savedUser);		
+	}
+
+	@Override
+	@Transactional
+	public String saveUser(User user) {
+		userRepository.save(user);
+		return "User Saved";
 	}
 	
+	@Override
+	public User getUserByUserName(String name) {	
+		Optional<User> returned = userRepository.findByUserName(name);
+		return returned.get();
+	}
 	
-//	@Override
-//	public String saveUser(User user) {		
-//		userRepository.save(user);		
-//		return "User saved";
-//	}
-
-//	@Override
-//	public String updateUser(User user) {
-//		// TODO Auto-generated method stub
-//		return null;
-//	}
+	@Override
+	public User getUserByUserId(int id) {		
+		Optional<User> userOptional = userRepository.findById(id);
+		if (!userOptional.isPresent()) {
+            throw new RuntimeException("User Not Found!");
+        }
+        return userOptional.get();
+	}
 
 	@Override
-	public String deleteUserByName(String userName) {
-		// TODO Auto-generated method stub
+	public String deleteByUserName(String userName) {
+		
+		userRepository.deleteByUserName(userName);
 		return null;
 	}
 
@@ -79,21 +87,11 @@ public class UserServiceImpl implements UserService{
 		return null;
 	}
 
-	@Override
-	public void saveOrUpdateUser(User user) {		
-		userRepository.save(user);
-	}
+	
 
-	@Override
-	@Transactional
-	public UserCommand saveUserCommand(UserCommand userCommand) {
-		
-		User detachedUser = userCommandToUser.convert(userCommand);
+    
 
-		User savedUser = userRepository.save(detachedUser);
-        //log.debug("Saved UserName:" + savedUser.getUserName());
-        return userToUserCommand.convert(savedUser);		
-	}
+	
 
 
 

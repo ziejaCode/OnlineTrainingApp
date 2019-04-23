@@ -2,11 +2,12 @@ package application.services;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.fail;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
-
+import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -32,6 +33,8 @@ import application.repositories.UserRepository;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
+//@DataJpaTest
+@AutoConfigureTestDatabase(replace=Replace.NONE)
 public class UserServiceIntegrationTest {
 	
 	@Autowired
@@ -43,65 +46,79 @@ public class UserServiceIntegrationTest {
 	@Autowired
 	UserToUserCommand userToUserCommand;
 
+	User user;
+	
+	@Before
+	public void setUp(){
+		
+		user = new User();
+		user.setUser_id(23);         
+        user.setUserName("Kali");
+        user.setUser_email("kali@fsdfj");
+        user.setPassword("jfksadfas");
+        user.setAuthority("USER");
+        user.setCreated(new Date());
+	}
+	
+	
 	@Transactional
 	@Test
-	public void testSaveUserName() {
+	public void testSaveOrUpdateUser() {
 		
 		Iterable<User>users = userRepository.findAll();
 		User testUser = users.iterator().next();
 		UserCommand userCommandTest = userToUserCommand.convert(testUser);
 		
 		userCommandTest.setUserName("Gniewkol");
-		UserCommand userCommandSave = userService.saveUserCommand(userCommandTest);
+		UserCommand userCommandSave = userService.saveOrUpdateUser(userCommandTest);
 		
-		assertEquals("Gniewkol", userCommandSave.getUserName());
-		
+		assertEquals("Gniewkol", userCommandSave.getUserName());		
 	}
+	
+	@Transactional
+	@Test
+	public void testSaveUser() {
+		
+		assertEquals("User Saved", userService.saveUser(user));		
+	}
+	
 	
 	@Test
 	public void testGetUserByUserName() {
 		
-		User user = userService.getUserByUserName("Gniewkol");		
+		User user = userService.getUserByUserName("Baton");		
 		
-		assertEquals("", user.getPassword());
-		assertEquals(new Integer(1), user.getUser_id());
-		assertNotNull(user);
-		
-		
+		assertEquals("fkasfas;jf", user.getPassword());
+		assertEquals(new Integer(18), user.getUser_id());
+		assertNotNull(user);		
 	}
 
-//	@Test
-//	public void testSaveUser() {
-//		fail("Not yet implemented");
-//	}
-//
-//	@Test
-//	public void testUpdateUser() {
-//		fail("Not yet implemented");
-//	}
-//
-//	@Test
-//	public void testDeleteUser() {
-//		fail("Not yet implemented");
-//	}
+	
+	@Test
+	public void testDeleteUser() {	
+		String name = "Baton";
+		userService.deleteByUserName(name);
+	}
 
-//	@Test
-//	public void testGetAllUsers() {	
-//		
-//		Set<User> users =  userService.getAllUsers();
-//		assertEquals(users.size(), 5);
-//		// test to delete
-//		System.out.println("\nUsers name is " + users.toString());
-//	}
+	@Test
+	public void testGetAllUsers() {	
+		
+		Set<User> users =  userService.getAllUsers();
+		
+		assertEquals(users.size(), 7);
+		
+		// test to delete
+		//System.out.println("\nUsers name is " + users.toString());
+	}
 
 //	@Test
 //	public void testDeleteAllUsers() {
 //		fail("Not yet implemented");
 //	}
 
-//	@After
-//	public void tearDown() throws Exception {
-//		userService = null;
-//		userRepository = null;
-//	}
+	@After
+	public void tearDown() throws Exception {
+		userService = null;
+		userRepository = null;
+	}
 }

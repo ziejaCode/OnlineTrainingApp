@@ -43,7 +43,7 @@ public class User {
 	@Column(name="created")
 	private Date created;
 	
-	@JsonIgnore
+	//@JsonIgnore
 	@OneToMany(cascade=CascadeType.ALL)
 	@JoinColumn(name="user_id", nullable=false)
 	private List<ExercisesNames>exercises = new ArrayList<ExercisesNames>();

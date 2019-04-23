@@ -33,24 +33,13 @@ public class UserRepositoryIntegrationTest {
 	}
 
 	@Test
-	public void testGetUserByUserName() {
-		
-//			Optional<User> user = userRepository.findByUserName("borek");
-//			assertEquals("gienia", user.get().getPassword());
+	public void testGetUserByUserName() {		
+			Optional<User> user = userRepository.findByUserName("borek");
+			assertEquals("gienia", user.get().getPassword());
 			
-			User user = userRepository.findByUserName("borek");			
-			assertEquals("gienia", user.getPassword());
-			assertEquals(new Integer(7), user.getUser_id());
-			assertNotNull(user);
-			
-			System.out.println();
-			System.out.println();
-//			System.out.println("I jest " + user.get().getUserName());
-			System.out.println("I jest " + user.getUserName());
-			System.out.println();
-			System.out.println();
-			
-		
+			assertEquals("gienia", user.get().getPassword());
+			assertEquals(new Integer(7), user.get().getUser_id());
+			assertNotNull(user);	
 	}
 
 }
