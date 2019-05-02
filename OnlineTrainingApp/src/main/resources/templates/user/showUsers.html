@@ -47,11 +47,10 @@
 								<td th:text="${user.userName}">Marian</td>
 								<td th:text="${user.user_email}">mara@jf.com</td>
 								<td th:text="${user.authority}">USER</td>
-								<td class="tdDel">
-								<a  >Delete</a>
-								</td>
+								<td><a th:href="@{'/user/' + ${user.user_id} + '/showUser/'}">Show</a></td>								
+								<td><a th:href="@{'/user/' + ${user.user_id} + '/update/'}">Update</a></td>
+								<td class="tdDel"><a th:href="@{'/user/' + ${user.user_id} + '/deleteById/'}">Delete</a></td>
 							</tr>
-						
 					</tbody>
 				</table>
 			</div>

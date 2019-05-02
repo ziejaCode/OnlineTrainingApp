@@ -41,5 +41,11 @@ public class UserRepositoryIntegrationTest {
 			assertEquals(new Integer(7), user.get().getUser_id());
 			assertNotNull(user);	
 	}
-
+	@Test
+	public void deleteUserByName(){		
+		userRepository.deleteByUserName("hermann");
+		
+		//userRepository.deleteById(19);
+	}
 }
+

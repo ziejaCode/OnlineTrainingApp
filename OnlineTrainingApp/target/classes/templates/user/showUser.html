@@ -29,12 +29,12 @@
 			class="col-xs-offset-0 col-xs-12 col-sm-offset-1 col-sm-10">			
 			<h2>This are all current users</h2>
 			
-			 
+			<a th:text="${user.user_id}"></a> 
 			<a th:text="${user.userName}"></a>
 			<a th:text="${user.user_email}"></a>
 			<a th:text="${user.password}"></a>
 			<a th:text="${user.authority}"></a>
-
+			<a th:href="@{'/user/' + ${user.user_id} + '/update/'}">Update</a>
 		</div>
 	</div>
 </div>

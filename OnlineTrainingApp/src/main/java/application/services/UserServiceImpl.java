@@ -24,9 +24,6 @@ public class UserServiceImpl implements UserService{
 	private final UserToUserCommand userToUserCommand;
 	
 	
-
-	
-	
 	public UserServiceImpl(UserRepository userRepository, UserCommandToUser userCommandToUser, UserToUserCommand userToUserCommand) {
 		this.userRepository = userRepository;
 		this.userCommandToUser = userCommandToUser;
@@ -35,14 +32,33 @@ public class UserServiceImpl implements UserService{
 
 	@Override
 	@Transactional
-	public UserCommand saveOrUpdateUser(UserCommand userCommand) {
-		
+	public UserCommand updateUser(UserCommand userCommand) {		
 		User detachedUser = userCommandToUser.convert(userCommand);
 		User savedUser = userRepository.save(detachedUser);
         //log.debug("Saved UserName:" + savedUser.getUserName());
-        return userToUserCommand.convert(savedUser);		
+       
+		
+		
+		
+		
+		
+		
+		
+		
+		return userToUserCommand.convert(savedUser);		
 	}
 
+//	@Override
+//	@Transactional
+//	public User updateUser(User user) {	
+//		User savedUser = null;
+//		if(!(user == null)) {
+//			savedUser = userRepository.save(user);
+//		}
+//        return savedUser;		
+//	}
+	
+	
 	@Override
 	@Transactional
 	public String saveUser(User user) {
@@ -66,12 +82,17 @@ public class UserServiceImpl implements UserService{
 	}
 
 	@Override
-	public String deleteByUserName(String userName) {
-		
+	public String deleteByUserName(String userName) {		
 		userRepository.deleteByUserName(userName);
-		return null;
+		return "User deleted";
 	}
 
+	@Override
+	public String deleteByUserId(Integer id) {
+		userRepository.deleteById(id);
+		return "Usere no. " + id + " was deleted";
+	}
+	
 	
 	@Override
 	public Set<User> getAllUsers() {
@@ -83,9 +104,11 @@ public class UserServiceImpl implements UserService{
 	
 	@Override
 	public String deleteAllUsers() {
-		// TODO Auto-generated method stub
+		userRepository.deleteAll();
 		return null;
 	}
+
+	
 
 	
 

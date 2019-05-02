@@ -1,5 +1,9 @@
 package application.converters;
 
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+
 import org.springframework.core.convert.converter.Converter;
 import org.springframework.lang.Nullable;
 import org.springframework.stereotype.Component;
@@ -11,8 +15,8 @@ import lombok.Synchronized;
 @Component
 public class UserToUserCommand implements Converter<User, UserCommand>{
 
-	
-	
+	String pattern = "yyyy-MM-dd";	
+	DateFormat df = new SimpleDateFormat(pattern);	
 	
 	@Synchronized
     @Nullable
@@ -28,7 +32,8 @@ public class UserToUserCommand implements Converter<User, UserCommand>{
         userCommand.setUser_email(source.getUser_email());
         userCommand.setPassword(source.getPassword());
         userCommand.setAuthority(source.getAuthority());
-        userCommand.setCreated(source.getCreated());
+        
+        userCommand.setCreated( df.format(source.getCreated()));
         
 	    return userCommand;
 	}

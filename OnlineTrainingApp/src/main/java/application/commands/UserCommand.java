@@ -1,13 +1,8 @@
 package application.commands;
 
-import java.util.Date;
-
-import lombok.Getter;
 import lombok.NoArgsConstructor;
-import lombok.Setter;
 
-@Setter
-@Getter
+
 @NoArgsConstructor
 public class UserCommand {
 	
@@ -16,8 +11,9 @@ public class UserCommand {
     private String user_email;
 	private String password;	
 	private String authority;
-	private Date created;
+	private String created;
 	
+
 	public Integer getUser_id() {
 		return user_id;
 	}
@@ -48,10 +44,10 @@ public class UserCommand {
 	public void setAuthority(String authority) {
 		this.authority = authority;
 	}
-	public Date getCreated() {
+	public String getCreated() {
 		return created;
 	}
-	public void setCreated(Date created) {
+	public void setCreated(String created) {
 		this.created = created;
 	}
 

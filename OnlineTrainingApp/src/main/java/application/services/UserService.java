@@ -10,8 +10,9 @@ import application.model.User;
 @Service
 public interface UserService {
 	
-	public UserCommand saveOrUpdateUser(UserCommand user);
-
+	public UserCommand updateUser(UserCommand user);
+//	public User updateUser(User user);
+	
 	public String saveUser(User user);
 	
 	public User getUserByUserName(String name);
@@ -20,7 +21,7 @@ public interface UserService {
 	
 	public String deleteByUserName(String userName);
 	
-	
+	public String deleteByUserId(Integer id);
 	
 	public Set<User> getAllUsers();
 	

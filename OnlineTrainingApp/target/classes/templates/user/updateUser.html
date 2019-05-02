@@ -29,7 +29,7 @@
 			class="col-xs-offset-0 col-xs-12 col-sm-offset-1 col-sm-10">			
 			<h2>This is going to be new User</h2>
 			<!--  method="post"-->
-			 <form th:object="${user}" th:action="@{/newUser/}" method="post" >
+			 <form th:object="${user}" th:action="@{/updateUser/}" method="post" >
 			 				<input type="hidden" th:field="*{user_id}"/>
 			 				<input type="hidden" th:field="*{authority}"/>
 			 				<input type="hidden" th:field="*{created}"/>

@@ -39,7 +39,6 @@ import application.repositories.UserRepository;
 
 
 public class UserServiceUnitTest {
-
 	
 	UserServiceImpl userService;	
 	@Mock
@@ -63,9 +62,7 @@ public class UserServiceUnitTest {
         user.setCreated(new Date());		
 		
 		MockitoAnnotations.initMocks(this);	
-		userService = new UserServiceImpl(userRepository, userCommandToUser, userToUserCommand);		
-		
-		
+		userService = new UserServiceImpl(userRepository, userCommandToUser, userToUserCommand);
 	}
 
 	@Test
@@ -90,7 +87,7 @@ public class UserServiceUnitTest {
 		
 		when(userRepository.save(returned)).thenReturn(returned);
 		
-		userService.saveOrUpdateUser(userToUserCommand.convert(returned));
+		//userService.saveOrUpdateUser(userToUserCommand.convert(returned));
 		
 		
 		userOptional = Optional.of(user);
@@ -151,12 +148,17 @@ public class UserServiceUnitTest {
 	}
 
 	@Test
-	public void testDeleteUser() {
+	public void testDeleteByUserName() {
 		String name = "Baton";
-		assertEquals("User deleted", userService.deleteByUserName(name));
+		userService.deleteByUserName(name);
+		verify(userRepository, times(1)).deleteByUserName(name);
 	}
 	
-	
+	@Test
+	public void testDeleteByUserId() {		
+		userService.deleteByUserId(20);
+		verify(userRepository, times(1)).deleteById(20);
+	}
 	
 	
 	
