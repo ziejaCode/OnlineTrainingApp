@@ -20,6 +20,7 @@ import application.commands.UserCommand;
 import application.model.Training;
 import application.model.User;
 import application.repositories.UserRepository;
+import application.services.TrainingService;
 import application.services.UserService;
 
 
@@ -28,6 +29,8 @@ public class LoginController {
 
 	private final UserService userService;    
 
+	//private final TrainingService trainingService;    
+	
     public LoginController(UserService userService) {
 		this.userService = userService;
 	}
@@ -45,7 +48,12 @@ public class LoginController {
     @RequestMapping("/user/{id}/showUser/")
     public String getIndividualUser(@PathVariable Integer id,  Model model ) {
     	
+    	
+    	
     	User user = userService.getUserByUserId(id);
+    	
+    	
+    	
     	model.addAttribute("user", user);
     	return "user/showUser";
     }

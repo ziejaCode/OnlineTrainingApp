@@ -19,6 +19,7 @@ import javax.servlet.http.HttpServletResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -41,17 +42,51 @@ import application.services.UserService;
 public class TrainingController {
 
 	
-	private final TrainingService trainingService;    
+//	private TrainingService trainingService;    
 
-    public TrainingController(TrainingService trainingService) {
-		this.trainingService = trainingService;
+	private final UserService userService; 
+	
+//    public TrainingController(TrainingService trainingService) {
+//		this.trainingService = trainingService;
+//	}
+    
+//	public TrainingController(TrainingService trainingService) {
+//		this.trainingService = trainingService;
+//	}
+	
+	public TrainingController(UserService userService) {
+		this.userService = userService;
 	}
 	
-    @RequestMapping("/allT")
-	public @ResponseBody Iterable<Training> getAllUsers() {	    	
-		return trainingService.getAllTrainings();
-	}    
+//    @RequestMapping("/allT")
+//	public @ResponseBody Iterable<Training> getAllUsers() {	    	
+//		return trainingService.getAllTrainings();
+//	}    
 	
+	
+	@RequestMapping("user/{id}/trainings")
+	public String getAllTrainings(@PathVariable Integer id,  Model model ) {
+		
+		//System.out.println("Jestem w new " + userService.getUserByUserId(id));
+		
+		model.addAttribute("user", userService.getUserByUserId(id));
+		
+		return "user/training/trainings";
+	}
+	
+	@RequestMapping("training/{id}/training")
+	public String getTraining(@PathVariable Integer id,  Model model ) {
+		
+		//System.out.println("Jestem w new " + userService.getUserByUserId(id));
+		
+		User user = userService.getUserByUserId(id);
+		
+		//Training training = 
+		
+//		model.addAttribute("training", userService.getUserByUserId(id));
+		
+		return "user/training/training";
+	}
 	
 	
 //	@Autowired 
@@ -72,16 +107,16 @@ public class TrainingController {
 //	}
 	
 	
-	@RequestMapping("/oneT")
-	public @ResponseBody Optional<Training> getTraining() {
-		// This returns a JSON or XML with the users
-		Optional<Training> training = trainingService.getTrainingById(5);
-		
-		System.out.println("...");
-//		System.out.println("Connecting...all " + trainings.get(0).getTrainingName());
-		System.out.println("...");
-		
-		
-		return training;
-	}
+//	@RequestMapping("/oneT")
+//	public @ResponseBody Optional<Training> getTraining() {
+//		// This returns a JSON or XML with the users
+//		Optional<Training> training = trainingService.getTrainingById(5);
+//		
+//		System.out.println("...");
+////		System.out.println("Connecting...all " + trainings.get(0).getTrainingName());
+//		System.out.println("...");
+//		
+//		
+//		return training;
+//	}
 }

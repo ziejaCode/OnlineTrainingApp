@@ -35,9 +35,10 @@
 			<a th:text="${user.password}"></a>
 			<a th:text="${user.authority}"></a>
 			<a th:href="@{'/user/' + ${user.user_id} + '/update/'}">Update</a>
+			<a th:href="@{'/user/' + ${user.user_id} + '/trainings/'}">Show my trainings</a>
 		</div>
 	</div>
-</div>
+</div>       
 
 <div class="container" th:replace="fragments/footer :: footer">
 <p>footer</p>

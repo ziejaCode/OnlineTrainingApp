@@ -13,6 +13,7 @@ public class ExerciseSetCommand {
 	public int getSet_id() {
 		return set_id;
 	}
+	
 	public void setSet_id(int set_id) {
 		this.set_id = set_id;
 	}

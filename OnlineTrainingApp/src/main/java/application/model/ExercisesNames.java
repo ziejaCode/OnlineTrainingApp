@@ -9,8 +9,6 @@ import javax.persistence.Table;
 import javax.persistence.Transient;
 
 
-
-
 @Entity
 @Table(name="exercisesNames")
 public class ExercisesNames {

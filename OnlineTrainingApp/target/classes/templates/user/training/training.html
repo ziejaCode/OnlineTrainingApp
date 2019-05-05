@@ -27,7 +27,7 @@
 	<div class="row">
 		<div id="trainingListTable"
 			class="col-xs-offset-0 col-xs-12 col-sm-offset-1 col-sm-10">			
-			<h2>This are all current users</h2>
+			<h2>This <a th:text="${training.training_name}}"></h2>
 			
 			<a th:text="${user.user_id}"></a> 
 			<a th:text="${user.userName}"></a>
@@ -35,7 +35,7 @@
 			<a th:text="${user.password}"></a>
 			<a th:text="${user.authority}"></a>
 			<a th:href="@{'/user/' + ${user.user_id} + '/update/'}">Update</a>
-			<a th:href="@{'/user/' + ${user.user_id} + '/trainings/'}">Show my trainings</a>
+			<a th:href="@{'/training/' + ${user.user_id} + '/showTrainings/'}">Show my trainings</a>
 		</div>
 	</div>
 </div>       

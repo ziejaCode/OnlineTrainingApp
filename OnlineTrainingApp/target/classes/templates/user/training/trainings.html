@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Users</title>
+    
+    <link href="../static/css/bootstrap-3.3.4-dist/css/bootstrap.min.css" rel="stylesheet" media="screen"
+            th:href="@{/css/bootstrap-3.3.4-dist/css/bootstrap.min.css}"/>
+
+    <script src="../static/js/jquery-2.1.4.min.js"
+          th:src="@{/js/jquery-2.1.4.min.js}"></script>
+    
+    <link th:href="@{/css/style.css}" rel="stylesheet" media="screen"/>
+    
+</head>
+
+<body>
+
+ 
+<div class="container" th:replace="fragments/header :: header">
+	<p>header</p>
+</div>
+ 
+<!-- <h2 th:text="${user.userName}"></h2> -->
+
+<div class="showUsersTrainings container">
+	<div class="row">
+		<div id="trainingListTable"
+			class="col-xs-offset-0 col-xs-12 col-sm-offset-1 col-sm-10">			
+			<h2>This are all trainings for <a th:text="${user.userName}"> </h2>
+			
+			
+			
+			<div class="table-responsive" >
+			
+			<!-- th:if="${not#lists.isEmpty(users)}" -->
+			
+				<table class="table">
+					<thead>
+						<tr>
+							<th>Id</th><th>Training name</th><th>Week day</th><th></th>
+						</tr>
+					</thead>
+					<tbody>						
+							<tr th:each="training:${user.trainings}">
+								<td th:text="${training.id_train}">Marian</td>
+								<td th:text="${training.training_name}">mara@jf.com</td>
+								<td th:text="${training.week_day}">USER</td>
+							 	<td><a th:href="@{'/training/' + ${training.id_train} + '/training/'}">Show</a></td>								
+								<td><a th:href="@{'/user/' + ${user.user_id} + '/update/'}">Update</a></td>
+								<td class="tdDel"><a th:href="@{'/user/' + ${user.user_id} + '/deleteById/'}">Delete</a></td>   
+							</tr>   <!-- -->
+					</tbody>
+				</table>
+			</div>
+			<br>
+			<div id="goBackLinks">	
+				
+					<a href="<c:url value='/adminPage'/>">Go back</a>
+				
+			</div>
+
+		</div>
+	</div>
+</div>
+
+<div class="container" th:replace="fragments/footer :: footer">
+<p>footer</p>
+</div>
+
+</body>
+
+</html>

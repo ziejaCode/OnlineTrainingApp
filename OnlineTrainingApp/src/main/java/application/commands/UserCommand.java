@@ -2,7 +2,6 @@ package application.commands;
 
 import lombok.NoArgsConstructor;
 
-
 @NoArgsConstructor
 public class UserCommand {
 	
