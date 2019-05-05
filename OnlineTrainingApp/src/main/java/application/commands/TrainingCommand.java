@@ -7,7 +7,7 @@ import application.model.Exercise;
 import lombok.NoArgsConstructor;
 
 @NoArgsConstructor
-public class TrainingComannd {
+public class TrainingCommand {
 	
     private Integer id_train;
 	private String training_name;

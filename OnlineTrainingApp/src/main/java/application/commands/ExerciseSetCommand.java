@@ -10,6 +10,8 @@ public class ExerciseSetCommand {
 	private int set_no;	
 	private int reps;	
 	private double weight;
+	
+	
 	public int getSet_id() {
 		return set_id;
 	}

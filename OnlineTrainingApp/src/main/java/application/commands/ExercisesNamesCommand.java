@@ -1,5 +1,8 @@
 package application.commands;
 
+import org.springframework.core.convert.converter.Converter;
+
+import application.model.Training;
 import lombok.NoArgsConstructor;
 
 @NoArgsConstructor
@@ -9,6 +12,8 @@ public class ExercisesNamesCommand {
 	private String exercise_name;
 	private String body_part;	
 	private int user_id;
+	
+	
 	public int getExerciseNameID() {
 		return exerciseNameID;
 	}

@@ -14,6 +14,8 @@ public class ExerciseCommand {
 	private int exerciseNo;
 	private String exerciseName;
 	private List<ExerciseSet>sets = new ArrayList<ExerciseSet>();
+	
+	
 	public int getExercise_id() {
 		return exercise_id;
 	}
